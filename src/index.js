@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
-import { darkTheme } from '@rainbow-me/rainbowkit';
 import "@rainbow-me/rainbowkit/styles.css";
 
 import App from "./App";
@@ -11,6 +10,7 @@ import {
   ConnectButton,
   connectorsForWallets,
   wallet,
+  RainbowKitProvider 
 } from '@rainbow-me/rainbowkit';
 import { WagmiConfig } from 'wagmi';
 import { chain, configureChains, createClient } from 'wagmi';
