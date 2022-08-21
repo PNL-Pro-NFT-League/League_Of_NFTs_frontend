@@ -6,26 +6,45 @@ import { darkTheme } from '@rainbow-me/rainbowkit';
 import "@rainbow-me/rainbowkit/styles.css";
 
 import App from "./App";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
 
-const { chains, provider } = configureChains(
-  [chain.rinkeby, chain.polygon, chain.optimism, chain.arbitrum],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+import {
+  ConnectButton,
+  connectorsForWallets,
+  wallet,
+} from '@rainbow-me/rainbowkit';
+import { WagmiConfig } from 'wagmi';
+import { chain, configureChains, createClient } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { sequenceWallet } from 'sequence-rainbowkit-wallet';
+
+const defaultProvider = alchemyProvider({
+  apiKey: process.env.ALCHEMY_APIKEY,
+});
+
+export const { chains, provider, webSocketProvider } = configureChains(
+  [chain.polygonMumbai],
+  [defaultProvider],
 );
 
-const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
-  chains,
-});
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      sequenceWallet({ chains }),
+      wallet.metaMask({ chains }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors,
+  connectors: () => [...connectors()],
   provider,
+  webSocketProvider,
 });
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
