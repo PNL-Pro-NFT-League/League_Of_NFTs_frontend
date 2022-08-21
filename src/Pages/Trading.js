@@ -59,7 +59,7 @@ const transferNft = async() => {
     await contract.transferFrom(owner,account,TokenID);
     console.log(tx);
 
-    await fetch( `http://localhost:3008/trading/${ addr }/${ playerId }/${ sellerAddress }`, {
+    await fetch( `https://nftleaguebackend.herokuapp.com/trading/${ addr }/${ playerId }/${ sellerAddress }`, {
       method: "PATCH",
       headers: {
         'Accept': "application/json",
@@ -87,7 +87,7 @@ const transferNft = async() => {
   };
 
   async function getData1 ( playerId ) {
-    await fetch( `http://localhost:3008/trading/${ addr }/${ playerId }` )
+    await fetch( `https://nftleaguebackend.herokuapp.com/trading/${ addr }/${ playerId }` )
       .then( ( res ) => {
         res.json().then( ( data1 ) => {
           setData( data1 );
@@ -99,7 +99,7 @@ const transferNft = async() => {
 
 
   async function getAddress ( playerId ) {
-    await fetch( `http://localhost:3008/trading/${ playerId }` )
+    await fetch( `https://nftleaguebackend.herokuapp.com/${ playerId }` )
       .then( ( res ) => {
         res.json().then( ( data1 ) => {
           if ( data1[0][0] === false ) {

@@ -56,7 +56,7 @@ const Profile = () => {
     };
 
   async function getPlayer1 () {
-    await fetch( `http://localhost:3008/auction/${addr}` )
+    await fetch( `https://nftleaguebackend.herokuapp.com/auction/${addr}` )
       .then( ( res ) => {
         res.json().then( ( data1 ) => {
           setplayerid( data1[ 2 ] );
@@ -68,7 +68,7 @@ const Profile = () => {
 
 
   async function topaddressfn() {
-    await fetch("http://localhost:3008/auction/") 
+    await fetch("https://nftleaguebackend.herokuapp.com/auction/") 
       .then((res) => {
         res.json().then((resp) => {
           console.log(resp);
@@ -88,7 +88,7 @@ const Profile = () => {
  console.log(playerid)
 
   const updateSellAmt = async () => {
-    await fetch(`http://localhost:3008/profile/${addr}`, {
+    await fetch(`https://nftleaguebackend.herokuapp.com/profile/${addr}`, {
       method: "PATCH",
       headers: {
         "Accept": "application/json",
@@ -106,7 +106,7 @@ const Profile = () => {
   };
 
   async function getData1(){
-    await fetch(`http://localhost:3008/leaderboard/${addr}`)
+    await fetch(`https://nftleaguebackend.herokuapp.com/leaderboard/${addr}`)
     .then((res) => {
       res.json().then((data1) => {
         setData1(data1);
