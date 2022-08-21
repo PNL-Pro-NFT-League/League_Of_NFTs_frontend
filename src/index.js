@@ -50,10 +50,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={darkTheme({
-        borderRadius: 'medium',
-        fontStack: 'small'
-      })}>
+      <RainbowKitProvider>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>
