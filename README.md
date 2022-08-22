@@ -87,26 +87,13 @@ Install my-project with npm
 Clone the project
 
 ```bash
-  git clone https://github.com/canbethegodfatherofyourlife/pnl_f.git
-```
-
-Go to the project directory
-
-```bash
-  cd frontend
+  git clone https://github.com/PNL-Pro-NFT-League/League_Of_NFTs_frontend.git
 ```
 
 Install dependencies
 
 ```bash
-  npm install ( once in root directory and once inside frontend)
-```
-
-Start the server
-
-```bash
-  npm start ( for MongoDB Backend)
-
-  cd frontend
+  npm install
   npm start
 ```
+
