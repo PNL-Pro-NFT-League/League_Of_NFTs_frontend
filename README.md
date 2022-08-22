@@ -49,6 +49,8 @@ Play & Earn Game where users leverage their cricketing knowledge to earn money
 * MongoDB
 * NodeJs
 * Bootstrap
+* Hardhat 
+* EthersJs
 
 ## Authors
 
