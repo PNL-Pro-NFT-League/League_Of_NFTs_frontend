@@ -2,7 +2,16 @@
 
 Play & Earn Game where users leverage their cricketing knowledge to earn money
 
+# Tracks we are applying in  - 
 
+* Public Goods
+* NFTs
+* Gaming
+
+# Sponsor Tool Used - 
+
+* FileCoin 
+* Spheron Network [ We deployed on Spheron Network, but their devrel said production is unstable for now ] 
 
 
 ## Features
