@@ -170,14 +170,15 @@ div.input-block input:focus + span.placeholder {
   font-size: larger;
   justify-content: center;
   width: 150px;
-  padding: 5px;
+  padding: 10px;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-  /* margin-top: 25px; */
+  margin-top: 25px;
+  margin-left: 10px;
 }
 
 
