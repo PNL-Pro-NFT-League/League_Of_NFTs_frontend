@@ -62,7 +62,7 @@ const Leaderboard = () => {
   
 
   async function getData1(){
-    await fetch(`https://nftleaguebackend.herokuapp.com/${addr}`)
+    await fetch(`https://nftleaguebackend.herokuapp.com/leaderboard/${addr}`)
     .then((res) => {
       res.json().then((data1) => {
         setData1(data1);

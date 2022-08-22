@@ -68,7 +68,7 @@ const Auction = () => {
   };
 
   async function placebid () {
-    await fetch( `https://nftleaguebackend.herokuapp.com/${ addr }/${ playerId }`, {
+    await fetch( `https://nftleaguebackend.herokuapp.com/auction/${ addr }/${ playerId }`, {
       method: "POST",
       headers: {
         'Accept': "application/json",
@@ -109,7 +109,7 @@ const Auction = () => {
   }
 
   const updateSellAmt = async () => {
-    await fetch( `https://nftleaguebackend.herokuapp.com/${ addr }/${ playerId }`, {
+    await fetch( `https://nftleaguebackend.herokuapp.com/auction/${ addr }/${ playerId }`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",

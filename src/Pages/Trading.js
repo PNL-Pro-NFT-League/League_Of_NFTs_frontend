@@ -101,7 +101,7 @@ const transferNft = async() => {
 
 
   async function getAddress ( playerId ) {
-    await fetch( `https://nftleaguebackend.herokuapp.com/${ playerId }` )
+    await fetch( `https://nftleaguebackend.herokuapp.com/trading/${ playerId }` )
       .then( ( res ) => {
         res.json().then( ( data1 ) => {
           if ( data1[0][0] === false ) {
