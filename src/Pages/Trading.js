@@ -9,6 +9,7 @@ import { iplData } from "../iplData";
 import { CategoryData } from "../data";
 import GetAccount from "../hooks/GetAccount"
 import GetContract from '../hooks/GetContract'
+import GetContract1 from '../hooks/GetContract1'
 import GetSigner from '../hooks/GetSigner'
 
 const Trading = () => {
@@ -32,11 +33,12 @@ const Trading = () => {
   };
 
   const contract = GetContract();
+  const contract1 = GetContract1();
   const account = GetAccount();
 
 const showToken=async(sellerAddres)=>{
   console.log(sellerAddres)
-  var id = await contract.showTokenID(ethers.utils.getAddress(sellerAddres));
+  var id = await contract1.showTokenID(ethers.utils.getAddress(sellerAddres));
   setTokenID(id.toString());
   console.log('Token',id.toString());
 }

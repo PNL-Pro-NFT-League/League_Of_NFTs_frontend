@@ -7,10 +7,10 @@ import { PlayerIdData } from "../playerToid";
 import { ethers } from "ethers";
 import { CategoryData } from "../data";
 import GetAccount from "../hooks/GetAccount"
-import abi from "../artifacts/auction.json";
+import abi from "../artifacts/contracts/Auction.sol/Auction.json";
 
 const contractABI = abi.abi;
-const contractAddress = "0x77086505161c2eee97F07F0f49c5A5AD04aBe464";
+const contractAddress = "0x6350DAEF24A15c6d05Da50D9E83F7cfd8C08BDdc";
 
 const Auction = () => {
   const addr = GetAccount()

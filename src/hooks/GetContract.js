@@ -1,12 +1,12 @@
 import { useContract, useSigner } from 'wagmi';
-import OpenABI from '../contracts/OpenABI.json'
+import abi from '../artifacts/contracts/GameItem.sol/ERC721.json'
 
 function GetContract() {
   const { data: signer, isError, isLoading } = useSigner()
 
   const contract = useContract({
-    addressOrName: '0x110FA4d226cA030C958318f8c8b8C7803De2D5Dc',
-    contractInterface: OpenABI,
+    addressOrName: '0xc2dE420aCdE13A1603161f11828aeDD63e22f4F4',
+    contractInterface: abi.abi,
     signerOrProvider: signer,
   })
 

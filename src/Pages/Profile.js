@@ -5,14 +5,16 @@ import "../styles/profile.css";
 import { CategoryData } from "../data";
 import { MetaData } from "../metadata";
 import GetAccount from "../hooks/GetAccount"
-import abi from '../artifacts/auction.json'
+import abi from '../artifacts/contracts/Auction.sol/Auction.json'
 import GetContract from '../hooks/GetContract';
+import GetContract1 from '../hooks/GetContract1';
 import { Connect } from '../components/ConnectButton';
 import {ethers} from 'ethers'
 
 const Profile = () => {
   const [ playerid, setplayerid ] = useState( 0 );
   const contract = GetContract();
+  const contract1 = GetContract1();
   const addr = GetAccount()
   const [data1, setData1] = useState([])
   let sendnftbut = useState(
@@ -35,7 +37,7 @@ const Profile = () => {
     };
 
     const contractABI = abi.abi;
-    const contractAddress = "0x77086505161c2eee97F07F0f49c5A5AD04aBe464";
+    const contractAddress = "0x6350DAEF24A15c6d05Da50D9E83F7cfd8C08BDdc";
 
     const withdraw = async () => {
       if (typeof ethereum !== "undefined") {
@@ -81,7 +83,7 @@ const Profile = () => {
   }
 
   const claimNft=async()=>{
-    await contract.awardItem(addr,MetaData[playerid])
+    await contract1.awardItem(addr,MetaData[playerid])
     console.log(MetaData[playerid])
   }
 
