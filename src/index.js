@@ -2,55 +2,39 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import { darkTheme } from '@rainbow-me/rainbowkit';
 import "@rainbow-me/rainbowkit/styles.css";
 
 import App from "./App";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 
-import {
-  ConnectButton,
-  connectorsForWallets,
-  wallet,
-  RainbowKitProvider 
-} from '@rainbow-me/rainbowkit';
-import { WagmiConfig } from 'wagmi';
-import { chain, configureChains, createClient } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { sequenceWallet } from 'sequence-rainbowkit-wallet';
-
-const defaultProvider = alchemyProvider({
-  apiKey: process.env.ALCHEMY_APIKEY,
-});
-
-export const { chains, provider, webSocketProvider } = configureChains(
-  [chain.polygonMumbai],
-  [defaultProvider],
+const { chains, provider } = configureChains(
+  [chain.rinkeby, chain.polygon, chain.optimism, chain.arbitrum],
+  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      sequenceWallet({ chains }),
-      wallet.metaMask({ chains }),
-      wallet.rainbow({ chains }),
-      wallet.walletConnect({ chains }),
-    ],
-  },
-]);
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  chains,
+});
 
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: () => [...connectors()],
+  connectors,
   provider,
-  webSocketProvider,
 });
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider>
+      <RainbowKitProvider chains={chains} theme={darkTheme({
+        borderRadius: 'medium',
+        fontStack: 'small'
+      })}>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>
